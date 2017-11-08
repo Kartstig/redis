@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
   redis:
@@ -11,6 +11,8 @@ services:
     ports:
       - '${REDIS_PORT}:6379'
     restart: always
+    sysctls:
+      - net.core.somaxconn=511
     volumes:
       - ./conf:/usr/local/etc/redis/
 
